@@ -9,28 +9,26 @@
 
 #include <string> // For potential string attributes like card name or description
 
-    class Card {
-    public:
-        // Constructor(s)
-        Card(); // Default constructor
-        Card(const std::string& Type, const std::string& description);
+enum class cardType {FIRE, WIND, WATER, FIREBREAK, BUCKET, RECKLESSABANDON, FIRESTORM};
 
-        // Member functions (getters and setters, or actions)
-        std::string getType() const;
-        std::string getDescription() const;
+enum cardName {FLAREUP, BURNINGSNAG, EXPLOSION, EMBER, NORTH, SOUTH, EAST, WEST, DE/REFOREST, DOZERLINE, SCRATCHLINE, };
 
-        // Example: A function to print card details
-        void printCardDetails() const;
+class Card {
+protected:
+    cardType type;
+    cardName string name;
+    std::string description;
 
-        // Add more member functions as needed for your game's logic
-        // For instance, for a card's effect:
-        // void applyEffect();
+public:
+    // Constructor(s)
+    Card(cardType Type, cardName name const std::string& description) : type(Type), name(name), description(description) {};
 
-    private:
-        std::string m_name;
-        std::string m_description;
+    // Member functions (getters and setters, or actions)
+    cardType getType() const {return type;}
+    cardName getName() const {return name;}
+    std::string getDescription() const {return description;}
+
+    // Example: A function to print card details
+    void printCardDetails() const;
     };
-
-
-
 #endif //CARD_H
