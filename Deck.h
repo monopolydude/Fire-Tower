@@ -18,6 +18,8 @@ public:
 
     void discardCard(Card card);
 
+    void reshuffleDiscardCardPileIntoDrawPile();
+
 private:
     std::vector<Card> drawPile;
     std::vector<Card> discardPile;

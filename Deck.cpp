@@ -90,3 +90,23 @@ void Deck::shuffle() {
     std::default_random_engine rng(rd()); // Seed the random number generator
     std::shuffle(drawPile.begin(), drawPile.end(), rng); // Shuffle the cards
 }
+
+Card Deck::drawCard() {
+    if (drawPile.empty()) {
+        reshuffleDiscardIntoDraw(); // Reshuffle discard into draw if needed
+    }
+
+    Card drawnCard = drawPile.back(); // Get the top card
+    drawPile.pop_back(); // Remove it from the draw pile
+    return drawnCard;
+}
+
+void Deck::discardCard(Card card) {
+    discardPile.push_back(card);
+}
+
+void Deck::reshuffleDiscardCardPileIntoDrawPile() {
+    drawPile.insert(drawPile.end(), discardPile.begin(), discardPile.end()); // Move cards
+    discardPile.clear(); // Clear the discard pile
+    shuffle();
+}
